@@ -42,6 +42,8 @@ class Comment(Tweet):
         return self.text
 
 
+# TODO: Instead of creating a token upon user creation, move it to a class which will be responsible for
+# TODO: user account management and tokens will be generated upon user request, so the API access is limited.
 @receiver(post_save, sender=User)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
