@@ -14,6 +14,7 @@ Done:
 Todo:
 
 * Retweets;
+* Search engine (for tweets, trend topics and users);
 * User account management;
 * User friendship (follow and unfollow);
 * Trend topics;
