@@ -14,7 +14,8 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ('id', 'text', 'owner', 'is_public', 'type', 'likes_count', 'comments_count', 'comments', 'parent', 'created_at', 'modified_at')
+        fields = ('id', 'text', 'owner', 'is_public', 'type', 'likes_count', 'comments_count', 'comments', 'parent',
+                  'created_at', 'modified_at')
 
     def get_fields(self):
         fields = super(CommentSerializer, self).get_fields()
@@ -29,7 +30,8 @@ class TweetSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tweet
-        fields = ('id', 'text', 'owner', 'is_public', 'type', 'likes_count', 'comments_count', 'comments', 'created_at', 'modified_at')
+        fields = ('id', 'text', 'owner', 'is_public', 'type', 'likes_count', 'comments_count', 'comments', 'created_at',
+                  'modified_at')
         read_only_fields = ('created_at', 'modified_at')
 
 
