@@ -32,15 +32,15 @@ class TweetTestCase(TestCase):
 
 class ViewTestCase(TestCase):
     def setUp(self):
-        user = User.objects.create(username='mars')
+        self.user = User.objects.create(username='mars')
 
         self.client = APIClient()
-        self.client.force_authenticate(user=user)
+        self.client.force_authenticate(user=self.user)
 
         self.tweet_data = {
             'text': 'Hello World!',
-            'is_public': False,
-            'owner': user.id
+            'is_public': True,
+            'type': 0
         }
 
         self.response = self.client.post(
@@ -97,3 +97,38 @@ class ViewTestCase(TestCase):
         )
 
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+    def test_api_can_comment_tweet(self):
+        tweet = Tweet.objects.get()
+        print(tweet.id)
+        comment_data = {
+            'text': 'Allons-y!',
+            'parent': tweet.id
+        }
+
+        response = self.client.post(
+            reverse('api:comment_create'),
+            comment_data,
+            format='json'
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+    def test_api_can_comment_a_comment(self):
+        self.test_api_can_comment_tweet()
+
+        tweet = Tweet.objects.first()
+        comment = tweet.comments.first()
+
+        comment_data = {
+            'text': 'Yup!',
+            'parent': comment.id
+        }
+
+        response = self.client.post(
+            reverse('api:comment_create'),
+            comment_data,
+            format='json'
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
