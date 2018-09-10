@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-import configparser
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -27,8 +26,6 @@ SECRET_KEY = '3_i#)mbqvxxi^97no-yh28bd2@*tkai4pak+x&75(#yduz^ijb'
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'twitter-drf-staging.herokuapp.com', 'twitter-drf-prod.herokuapp.com']
-
-os.environ['HTTPS'] = "off"
 
 # Application definition
 
@@ -78,17 +75,20 @@ WSGI_APPLICATION = 'twitter.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-database = configparser.RawConfigParser()
-database.read(os.path.join(os.path.abspath(os.path.dirname(__file__)), r'../../', 'database.properties'))
+DB = os.environ['DRF_DB']
+HOST = os.environ['DRF_HOST']
+PORT = os.environ['DRF_PORT']
+USER = os.environ['DRF_USER']
+PASS = os.environ['DRF_PASS']
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': database.get('database', 'db'),
-        'USER': database.get('database', 'user'),
-        'PASSWORD': database.get('database', 'pass'),
-        'HOST': database.get('database', 'host'),
-        'PORT': database.get('database', 'port'),
+        'NAME': DB,
+        'USER': USER,
+        'PASSWORD': PASS,
+        'HOST': HOST,
+        'PORT': PORT,
     }
 }
 
