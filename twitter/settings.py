@@ -83,7 +83,7 @@ PASS = os.environ['DRF_PASS']
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': DB,
         'USER': USER,
         'PASSWORD': PASS,
