@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['twitter-drf-staging.herokuapp.com', 'twitter-drf-prod.herokuapp.com']
 
+os.environ['HTTPS'] = "off"
 
 # Application definition
 
