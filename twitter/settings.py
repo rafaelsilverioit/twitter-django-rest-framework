@@ -25,7 +25,7 @@ SECRET_KEY = '3_i#)mbqvxxi^97no-yh28bd2@*tkai4pak+x&75(#yduz^ijb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['twitter-drf-staging.herokuapp.com', 'twitter-drf-prod.herokuapp.com']
 
 
 # Application definition
