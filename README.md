@@ -1,4 +1,4 @@
-[![Build Status](https://semaphoreci.com/api/v1/rafaelsilverioit/twitter-django-rest-framework/branches/master/badge.svg)](https://semaphoreci.com/rafaelsilverioit/twitter-django-rest-framework)
+[![Build Status](https://semaphoreci.com/api/v1/rafaelsilverioit/twitter-django-rest-framework/branches/staging/badge.svg)](https://semaphoreci.com/rafaelsilverioit/twitter-django-rest-framework)
 
 # twitter-django-rest-framework
 
