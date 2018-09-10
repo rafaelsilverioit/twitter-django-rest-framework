@@ -1,3 +1,5 @@
+[![Build Status](https://semaphoreci.com/api/v1/rafaelsilverioit/twitter-django-rest-framework/branches/develop/badge.svg)](https://semaphoreci.com/rafaelsilverioit/twitter-django-rest-framework)
+
 # twitter-django-rest-framework
 
 Building a simple Twitter like app with Django Rest Framework for the backend and hopefully (haven't decided yet) React with Materialize for the frontend.
