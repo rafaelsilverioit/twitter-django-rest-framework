@@ -15,6 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+import configparser
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -77,14 +78,17 @@ WSGI_APPLICATION = 'twitter.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+database = configparser.RawConfigParser()
+database.read(os.path.join(os.path.abspath(os.path.dirname(__file__)), r'../../', 'database.properties'))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'twitter_drf',
-        'USER': 'twitter_drf',
-        'PASSWORD': '*twitter_drf$',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'NAME': database.get('database', 'db'),
+        'USER': database.get('database', 'user'),
+        'PASSWORD': database.get('database', 'pass'),
+        'HOST': database.get('database', 'host'),
+        'PORT': database.get('database', 'port'),
     }
 }
 
