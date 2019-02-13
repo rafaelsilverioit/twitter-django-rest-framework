@@ -9,7 +9,7 @@ Done:
 * Rest API with all tweet handling endpoints, business logic, authentication and authorization.
   * Tweet management: Users can read any public available tweet and create, update and delete their own tweets only;
   * Privacy settings (public or private): Users can set only their tweets to public or private;
-  * Comments and nested comments: Users can comment in any public available comment and reply to other comments. Users can create, update and delete ther own comments only;
+  * Comments and nested comments: Users can comment in any public available comment and reply to other comments. Users can create, update and delete their own comments only;
   * Likes: Users can like and dislike any public available tweet;
   * Authentication and authorization for the API: Whenever a new user is created, an authentication token is also created for that user. As mentioned above, all user authorization measures needed so far were implemented.
 
