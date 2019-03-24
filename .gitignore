@@ -108,3 +108,8 @@ venv.bak/
 
 # Github
 README.md
+
+# React/Babel/Webpack/vscode
+node_modules
+package-lock.json
+.vscode
