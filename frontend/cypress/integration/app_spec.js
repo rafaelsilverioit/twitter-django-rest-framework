@@ -1,4 +1,4 @@
-describe('Django REST Framework / React quickstart app', () => {
+ describe('Django REST Framework / React quickstart app', () => {
   const tweet = {
       text: "Papaco GOD",
       isPublic: true
@@ -12,8 +12,8 @@ describe('Django REST Framework / React quickstart app', () => {
   it("should be able to fill a web form", () => {
       cy.visit("/", {
           auth: {
-              username: 'username',
-              password: 'password'
+              username: 'silverio',
+              password: 'lkm-98cd'
           }
       });
 
@@ -34,8 +34,8 @@ describe('Django REST Framework / React quickstart app', () => {
       cy
         .visit("/", {
           auth: {
-              username: 'username',
-              password: 'password'
+              username: 'silverio',
+              password: 'lkm-98cd'
           }
         })
         .get('tr')

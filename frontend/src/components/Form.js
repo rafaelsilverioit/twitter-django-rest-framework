@@ -9,19 +9,26 @@ class Form extends Component {
 
     state = {
         text: "",
-        isPublic: false
+        is_public: false
     };
 
     handleChange = e => {
-        this.setState({[e.target.name]: e.target.value});
+        let val = e.target.value;
+
+        if(e.target.name === "isPublic") {
+            val = val == 'true';
+        }
+
+        this.setState({[e.target.name]: val});
     };
 
     handleSubmit = e => {
         e.preventDefault();
 
-        const {text, isPublic} = this.state;
+        const {text, is_public} = this.state;
 
-        const tweet = {text, isPublic};
+        const tweet = {text, is_public};
+
         const conf = {
             method: "post",
             body: JSON.stringify(tweet),
@@ -30,49 +37,51 @@ class Form extends Component {
 
         fetch(this.props.endpoint, conf)
             .then(res => console.log(res))
-            .catch(err => console.err(err));
+            .catch(err => console.error(err));
     };
         
     render() {
-        const {text, isPublic} = this.state;
-
         return (
-            <div className="column">
-                <form onSubmit={this.handleSubmit}>
-                    <div className="field">
-                        <label className="label">Text</label>
-                        <div className="control">
-                            <input
-                                className="input"
-                                type="text"
-                                name="text"
-                                onChange={this.handleChange}
-                                defaultValue={text}
-                                required
-                            />
+            <div className="container col-md-6" style={{paddingTop: 30}}>
+                <div className="column">
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="form-group">
+                            <div className="control">
+                                <textarea
+                                    className="form-control"
+                                    name="text"
+                                    onChange={this.handleChange}
+                                    defaultValue="What are you up to?"
+                                    cols={50}
+                                    rows={7}
+                                    minLength={1}
+                                    maxLength={250}
+                                    required
+                                />
+                            </div>
                         </div>
-                    </div>
-
-                    <div className="field">
-                        <label className="label">Público</label>
-                        <div className="control">
-                            <input
-                                className="radio"
-                                type="radio"
-                                name="isPublic"
+                        <div className="form-group">
+                            <select
+                                className="custom-select col-sm-3 pull-left"
+                                id="is_public"
+                                name="is_public"
                                 onChange={this.handleChange}
-                                defaultValue={isPublic}
-                                required
-                            />
-                        </div>
-                    </div>
+                                required>
+                                <option value="true" defaultChecked>Público</option>
+                                <option value="false">Privado</option>
+                            </select>
 
-                    <div className="control">
-                        <button type="submit" className="button is-info">
-                            Tweet
-                        </button>
-                    </div>
-                </form>
+                            <label htmlFor="isPublic" className="label col-sm-5 text-left">
+                                <i className="fas fa-globe-americas" />
+                            </label>
+
+                            <button type="submit" className="btn btn-primary col-sm-4 pull-right">
+                                <i className="fab fa-twitter" /> Tweet
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
             </div>
         );
     }
