@@ -1,5 +1,5 @@
 configparser==3.5.0
-Django==2.2.13
+Django==2.2.18
 djangorestframework==3.11.2
 gunicorn==19.9.0
 psycopg2==2.7.5
